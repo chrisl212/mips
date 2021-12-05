@@ -1,4 +1,6 @@
 package ftch_dec_pkg;
+  import mips_pkg::*;
+
   typedef struct packed {
     word_t pc;
     word_t instr;

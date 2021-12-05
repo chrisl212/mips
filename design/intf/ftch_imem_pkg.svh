@@ -1,4 +1,6 @@
 package ftch_imem_pkg;
+  import mips_pkg::*;
+
   typedef struct packed {
     word_t addr;
   } ftch_imem_pkt_t;
