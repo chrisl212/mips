@@ -1,0 +1,28 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/design/mips_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/design/cpu/intf/reg_file_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/design/cpu/intf/ftch_dec_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/design/cpu/intf/dec_exec_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/design/cpu/intf/haz_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/design/cpu/intf/wrb_dec_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/design/cpu/dec_stg/reg_file/reg_file.sv" into library work
+INFO: [VRFC 10-311] analyzing module reg_file
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/design/cpu/dec_stg/dec_stg.sv" into library work
+INFO: [VRFC 10-311] analyzing module dec_stg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/utils/instr/instr_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/iuvc/clk_reset/clk_reset_intf.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/iuvc/clk_reset/clk_reset_iuvc_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/iuvc/ftch_dec/ftch_dec_intf.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/iuvc/ftch_dec/ftch_dec_iuvc_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/iuvc/dec_exec/dec_exec_intf.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/iuvc/dec_exec/dec_exec_iuvc_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/iuvc/dec_haz/dec_haz_intf.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/iuvc/dec_haz/dec_haz_iuvc_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/iuvc/haz_dec/haz_dec_intf.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/iuvc/haz_dec/haz_dec_iuvc_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/iuvc/wrb_dec/wrb_dec_intf.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/iuvc/wrb_dec/wrb_dec_iuvc_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/muvc/dec_stg/dec_env_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/stim/dec_stg/dec_stim_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/model/dec_stg/sv/dec_tb_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/model/dec_stg/sv/tb_top.sv" into library work
+INFO: [VRFC 10-311] analyzing module tb_top

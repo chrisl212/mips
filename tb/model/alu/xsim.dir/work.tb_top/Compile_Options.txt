@@ -1,0 +1,1 @@
+-debug "all" -timescale "1ns/1ns" -override_timeunit -override_timeprecision "tb_top" 

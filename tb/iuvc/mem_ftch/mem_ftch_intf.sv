@@ -4,17 +4,21 @@ interface mem_ftch_intf(
 );
   import mem_ftch_pkg::*;
 
+  logic          mem_ftch_vld;
   mem_ftch_pkt_t mem_ftch_pkt;
 
   clocking mon_cb @(posedge clk);
+    input mem_ftch_vld;
     input mem_ftch_pkt;
   endclocking : mon_cb
 
   clocking master_driver_cb @(posedge clk);
+    output mem_ftch_vld;
     output mem_ftch_pkt;
   endclocking : master_driver_cb
 
   clocking slave_driver_cb @(posedge clk);
+    input  mem_ftch_vld;
     input  mem_ftch_pkt;
   endclocking : slave_driver_cb
 

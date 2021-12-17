@@ -2,6 +2,8 @@ package imem_ftch_iuvc_pkg;
   `include "uvm_macros.svh"
   import uvm_pkg::*;
   import ftch_imem_pkg::*;
+  
+  `uvm_analysis_imp_decl(_imem_ftch)
 
   `include "imem_ftch_seq_item.svh"
   `include "imem_ftch_monitor.svh"

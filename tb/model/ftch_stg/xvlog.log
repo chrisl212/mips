@@ -1,0 +1,21 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/design/mips_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/design/cpu/intf/ftch_dec_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/design/cpu/intf/ftch_imem_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/design/cpu/intf/mem_ftch_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/design/cpu/ftch_stg/ftch_stg.sv" into library work
+INFO: [VRFC 10-311] analyzing module ftch_stg
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/iuvc/clk_reset/clk_reset_intf.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/iuvc/clk_reset/clk_reset_iuvc_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/iuvc/ftch_dec/ftch_dec_intf.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/iuvc/ftch_dec/ftch_dec_iuvc_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/iuvc/ftch_imem/ftch_imem_intf.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/iuvc/ftch_imem/ftch_imem_iuvc_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/iuvc/imem_ftch/imem_ftch_intf.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/iuvc/imem_ftch/imem_ftch_iuvc_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/iuvc/mem_ftch/mem_ftch_intf.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/iuvc/mem_ftch/mem_ftch_iuvc_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/muvc/ftch_stg/ftch_env_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/stim/ftch_stg/ftch_stim_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/model/ftch_stg/sv/ftch_tb_pkg.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/chris/Projects_local/mips/tb/model/ftch_stg/sv/tb_top.sv" into library work
+INFO: [VRFC 10-311] analyzing module tb_top

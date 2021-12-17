@@ -5,6 +5,8 @@ class ftch_test extends uvm_test;
   ftch_virtual_sequencer ftch_vsqr;
   ftch_virtual_sequence  ftch_vseq;
 
+  string s_id = "FTCH_TEST/";
+
   extern         function      new(string name="ftch_test", uvm_component parent=null);
   extern virtual function void build_phase(uvm_phase phase);
   extern virtual function void connect_phase(uvm_phase phase);
@@ -36,7 +38,15 @@ function void ftch_test::connect_phase(uvm_phase phase);
 endfunction : connect_phase
 
 task ftch_test::run_phase(uvm_phase phase);
+  `uvm_info({s_id, "RAISING_OBJECTION"}, "", UVM_NONE)
+  phase.raise_objection(this);
+
   fork
     ftch_vseq.start(ftch_vsqr);
   join_none
+
+  wait(ftch_vsqr.done == 1);
+  
+  `uvm_info({s_id, "DROPPING_OBJECTION"}, "", UVM_NONE)
+  phase.drop_objection(this);
 endtask : run_phase

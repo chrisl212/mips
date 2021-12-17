@@ -30,13 +30,12 @@ task mem_ftch_monitor::run_phase(uvm_phase phase);
   mem_ftch_seq_item seq_item;
 
   forever begin
-    @(posedge vif.clk);
+    @(vif.mon_cb iff vif.resetn);
 
-    if (vif.resetn == 1) begin
-      seq_item     = mem_ftch_seq_item::type_id::create("mem_ftch_seq_item");
-      seq_item.pkt = vif.mon_cb.mem_ftch_pkt;
+    seq_item     = mem_ftch_seq_item::type_id::create("mem_ftch_seq_item");
+    seq_item.vld = vif.mon_cb.mem_ftch_vld;
+    seq_item.pkt = vif.mon_cb.mem_ftch_pkt;
 
-      item_collected_port.write(seq_item);
-    end
+    item_collected_port.write(seq_item);
   end
 endtask : run_phase

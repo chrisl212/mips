@@ -2,6 +2,8 @@ package mem_ftch_iuvc_pkg;
   `include "uvm_macros.svh"
   import uvm_pkg::*;
   import mem_ftch_pkg::*;
+  
+  `uvm_analysis_imp_decl(_mem_ftch)
 
   `include "mem_ftch_seq_item.svh"
   `include "mem_ftch_monitor.svh"

@@ -19,8 +19,6 @@ task reg_file_wr_req_sequence::body();
     if (p_sequencer.kill) break;
 
     wait(p_sequencer.enabled == 1);
-    `uvm_do_with(item, {
-      item.pkt.addr != 0;
-    })
+    `uvm_do(item)
   end
 endtask : body

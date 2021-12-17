@@ -1,0 +1,4 @@
+  CREATE_STREAM @0 {NAME:alu_vseq T:Transactions SCOPE:uvm_test_top.alu_vsqr STREAM:872}
+  CREATE_STREAM @0 {NAME:alu_in_seq T:Transactions SCOPE:uvm_test_top.env.alu_in_agt.alu_in_sequencer STREAM:883}
+  CREATE_STREAM @0 {NAME:alu_vseq T:Transactions SCOPE:uvm_test_top.alu_vsqr STREAM:872}
+  CREATE_STREAM @0 {NAME:alu_in_seq T:Transactions SCOPE:uvm_test_top.env.alu_in_agt.alu_in_sequencer STREAM:883}

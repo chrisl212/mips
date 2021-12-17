@@ -20,6 +20,7 @@ task imem_ftch_sequence::body();
 
     wait(p_sequencer.enabled == 1);
 
+    `uvm_info("CHRIS_SEQ", $sformatf("%0d", p_sequencer.trans_cnt), UVM_NONE)
     `uvm_do_with(item, {
       if (p_sequencer.trans_cnt > 0) {
         item.vld dist {
@@ -30,5 +31,8 @@ task imem_ftch_sequence::body();
         item.vld == 0;
       }
     })
+    if (item.vld) begin
+      p_sequencer.trans_cnt = 0;
+    end
   end
 endtask : body

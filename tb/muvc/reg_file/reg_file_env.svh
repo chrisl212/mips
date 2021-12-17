@@ -37,7 +37,6 @@ function void reg_file_env::build_phase(uvm_phase phase);
 endfunction : build_phase
 
 function void reg_file_env::connect_phase(uvm_phase phase);
-  clk_reset_agt.monitor.clk_fall_port.connect(reg_file_sb.clk_fall_imp);
   clk_reset_agt.monitor.reset_port.connect(reg_file_sb.reset_imp);
 
   reg_file_rd_req_agt.monitor.item_collected_port.connect(reg_file_sb.reg_file_rd_req_imp);

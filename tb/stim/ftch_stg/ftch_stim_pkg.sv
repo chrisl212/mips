@@ -5,6 +5,7 @@ package ftch_stim_pkg;
   import ftch_imem_iuvc_pkg::*;
   import imem_ftch_iuvc_pkg::*;
   import mem_ftch_iuvc_pkg::*;
+  import clk_reset_iuvc_pkg::*;
 
   `include "ftch_virtual_sequencer.svh"
   `include "dec_ftch_sequence.svh"

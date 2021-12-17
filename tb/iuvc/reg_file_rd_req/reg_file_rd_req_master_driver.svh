@@ -40,7 +40,7 @@ endtask : run_phase
 task reg_file_rd_req_master_driver::drive(reg_file_rd_req_seq_item item);
   `uvm_info({s_id, "DRIVING"}, $sformatf("driving request:\n%0s", item.sprint()), UVM_DEBUG)
 
-  @(posedge vif.clk);
+  @(vif.master_driver_cb);
   vif.master_driver_cb.reg_file_rd_req_vld[rd_port] <= item.vld;
   vif.master_driver_cb.reg_file_rd_req_pkt[rd_port] <= item.pkt;
 endtask : drive

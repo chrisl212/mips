@@ -2,6 +2,8 @@ package reg_file_rd_req_iuvc_pkg;
   `include "uvm_macros.svh"
   import uvm_pkg::*;
   import reg_file_pkg::*;
+  
+  `uvm_analysis_imp_decl(_reg_file_rd_req)
 
   `include "reg_file_rd_req_seq_item.svh"
   `include "reg_file_rd_req_monitor.svh"

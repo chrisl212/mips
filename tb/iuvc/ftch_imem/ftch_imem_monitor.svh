@@ -27,23 +27,15 @@ function void ftch_imem_monitor::build_phase(uvm_phase phase);
 endfunction : build_phase
 
 task ftch_imem_monitor::run_phase(uvm_phase phase);
-  ftch_imem_seq_item seq_item, last_seq_item = null;
+  ftch_imem_seq_item seq_item;
 
   forever begin
-    @(posedge vif.clk);
+    @(vif.mon_cb iff vif.resetn);
 
-    if (vif.mon_cb.ftch_imem_vld == 1 && vif.resetn == 1
-        && (!last_seq_item || vif.mon_cb.ftch_imem_pkt != last_seq_item.pkt)) begin
-      seq_item     = ftch_imem_seq_item::type_id::create("ftch_imem_seq_item");
-      seq_item.pkt = vif.mon_cb.ftch_imem_pkt;
+    seq_item     = ftch_imem_seq_item::type_id::create("ftch_imem_seq_item");
+    seq_item.vld = vif.mon_cb.ftch_imem_vld;
+    seq_item.pkt = vif.mon_cb.ftch_imem_pkt;
 
-      item_collected_port.write(seq_item);
-
-      last_seq_item = seq_item;
-    end
-
-    if (vif.mon_cb.ftch_imem_vld == 0 || vif.resetn == 0) begin
-      last_seq_item = null;
-    end
+    item_collected_port.write(seq_item);
   end
 endtask : run_phase

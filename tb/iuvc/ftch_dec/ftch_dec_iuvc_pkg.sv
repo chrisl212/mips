@@ -2,6 +2,8 @@ package ftch_dec_iuvc_pkg;
   `include "uvm_macros.svh"
   import uvm_pkg::*;
   import ftch_dec_pkg::*;
+  
+  `uvm_analysis_imp_decl(_ftch_dec)
 
   `include "ftch_dec_seq_item.svh"
   `include "ftch_dec_monitor.svh"

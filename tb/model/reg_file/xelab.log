@@ -1,0 +1,35 @@
+Vivado Simulator v2021.2
+Copyright 1986-1999, 2001-2021 Xilinx, Inc. All Rights Reserved.
+Running: /opt/xilinx/Vivado/2021.2/bin/unwrapped/lnx64.o/xelab -debug all -timescale 1ns/1ns -override_timeunit -override_timeprecision tb_top 
+Multi-threading is on. Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4468] File : /proj/xbuilds/SWIP/9999.0_0805_2155/installs/lin64/Vivado/2022.1/data/system_verilog/uvm_1.2/xlnx_uvm_package.sv, Line : 25994, RANDC variable size more than 8 bits. This will be treated as a RAND variable instead.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ns
+Compiling package uvm.uvm_pkg
+Compiling package std.std
+Compiling package work.reg_file_rd_req_iuvc_pkg
+Compiling package work.reg_file_pkg
+Compiling package work.mips_pkg
+Compiling package work.reg_file_env_pkg
+Compiling package work.clk_reset_iuvc_pkg
+Compiling package work.reg_file_stim_pkg
+Compiling package work.reg_file_rd_rsp_iuvc_pkg
+Compiling package work.reg_file_wr_req_iuvc_pkg
+Compiling package work.reg_file_tb_pkg
+Compiling module work.clk_reset_intf
+Compiling module work.mon_cb
+Compiling module work.master_driver_cb
+Compiling module work.reg_file_wr_req_intf
+Compiling module work.mon_cb
+Compiling module work.master_driver_cb
+Compiling module work.reg_file_rd_req_intf
+Compiling module work.mon_cb
+Compiling module work.master_driver_cb
+Compiling module work.reg_file_rd_rsp_intf
+Compiling module work.reg_file
+Compiling module work.tb_top
+Built simulation snapshot work.tb_top

@@ -1,0 +1,7 @@
+Running: xsim.dir/work.tb_top/xsimk -simmode gui -testplusarg UVM_TESTNAME=ftch_test -testplusarg UVM_MAX_QUIT_COUNT=5,NO -testplusarg UVM_VERBOSITY=UVM_FULL -wdb work.tb_top.wdb -simrunnum 0 -socket 45803
+Design successfully loaded
+Design Loading Memory Usage: 49252 KB (Peak: 49252 KB)
+Design Loading CPU Usage: 20 ms
+Simulation completed
+Simulation Memory Usage: 556220 KB (Peak: 556220 KB)
+Simulation CPU Usage: 4630 ms

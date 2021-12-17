@@ -1,9 +1,4 @@
 class ftch_virtual_sequencer extends uvm_sequencer;
-  `uvm_analysis_imp_decl(_clk)
-  `uvm_analysis_imp_decl(_ftch_dec)
-  `uvm_analysis_imp_decl(_ftch_imem)
-  `uvm_analysis_imp_decl(_imem_ftch)
-  `uvm_analysis_imp_decl(_mem_ftch)
 
   uvm_analysis_imp_clk#(bit, ftch_virtual_sequencer)                      clk_imp;
   uvm_analysis_imp_ftch_dec#(ftch_dec_seq_item, ftch_virtual_sequencer)   ftch_dec_imp;
@@ -19,6 +14,13 @@ class ftch_virtual_sequencer extends uvm_sequencer;
   int                 trans_cnt = 0;
   bit                 wait_done = 0;
   bit                 done      = 0;
+
+  bit                 ftch_imem_vld  = 0;
+  bit                 mem_ftch_vld   = 0;
+  bit                 ftch_dec_seen  = 0;
+  bit                 ftch_imem_seen = 0;
+  bit                 imem_ftch_seen = 0;
+  bit                 mem_ftch_seen  = 0;
 
   string s_id = "FTCH_VSQR/";
 
@@ -54,7 +56,21 @@ task ftch_virtual_sequencer::run_phase(uvm_phase phase);
   `uvm_info({s_id, "RAISE_OBJECTION"}, "raising run_phase objection", UVM_NONE)
   phase.raise_objection(this);
 
-  wait(done == 1);
+  fork
+    forever begin
+      wait(ftch_dec_seen && ftch_imem_seen && mem_ftch_seen);
+
+      if (ftch_imem_vld) begin
+        imem_ftch_sqr.trans_cnt = 1;
+      end
+
+      ftch_dec_seen  = 0;
+      ftch_imem_seen = 0;
+      imem_ftch_seen = 0;
+      mem_ftch_seen  = 0;
+    end
+    wait(done == 1);
+  join_any
 
   `uvm_info({s_id, "DROP_OBJECTION"}, "dropping run_phase objection", UVM_NONE)
   phase.drop_objection(this);
@@ -82,41 +98,29 @@ endfunction : write_clk
 function void ftch_virtual_sequencer::write_ftch_dec(ftch_dec_seq_item item);
   `uvm_info({s_id, "WRITE_FTCH_DEC"}, $sformatf("received ftch_dec item:\n%0s", item.sprint()), UVM_FULL)
 
-  trans_cnt++;
+  if (item.vld && item.rdy) begin
+    trans_cnt += 1;
+  end
+
+  ftch_dec_seen = 1;
 endfunction : write_ftch_dec
 
 function void ftch_virtual_sequencer::write_ftch_imem(ftch_imem_seq_item item);
   `uvm_info({s_id, "WRITE_FTCH_IMEM"}, $sformatf("received ftch_imem item:\n%0s", item.sprint()), UVM_FULL)
 
-  fork
-    begin
-      imem_ftch_sqr.trans_cnt_semaphore.get();
-      imem_ftch_sqr.trans_cnt = 1;
-      imem_ftch_sqr.trans_cnt_semaphore.put();
-    end
-  join_none
+  ftch_imem_vld = item.vld;
+  ftch_imem_seen = 1;
 endfunction : write_ftch_imem
 
 function void ftch_virtual_sequencer::write_imem_ftch(imem_ftch_seq_item item);
   `uvm_info({s_id, "WRITE_IMEM_FTCH"}, $sformatf("received imem_ftch item:\n%0s", item.sprint()), UVM_FULL)
 
-  fork
-    begin
-      imem_ftch_sqr.trans_cnt_semaphore.get();
-      imem_ftch_sqr.trans_cnt = 0;
-      imem_ftch_sqr.trans_cnt_semaphore.put();
-    end
-  join_none
+  imem_ftch_seen = 1;
 endfunction : write_imem_ftch
 
 function void ftch_virtual_sequencer::write_mem_ftch(mem_ftch_seq_item item);
   `uvm_info({s_id, "WRITE_MEM_FTCH"}, $sformatf("received mem_ftch item:\n%0s", item.sprint()), UVM_FULL)
 
-  fork
-    begin
-      imem_ftch_sqr.trans_cnt_semaphore.get();
-      imem_ftch_sqr.trans_cnt = 0;
-      imem_ftch_sqr.trans_cnt_semaphore.put();
-    end
-  join_none
+  mem_ftch_vld  = item.vld;
+  mem_ftch_seen = 1;
 endfunction : write_mem_ftch

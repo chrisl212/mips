@@ -39,7 +39,7 @@ endtask : run_phase
 task ftch_dec_master_driver::drive(ftch_dec_seq_item item);
   `uvm_info({s_id, "DRIVING"}, $sformatf("driving request:\n%0s", item.sprint()), UVM_DEBUG)
 
-  @(posedge vif.clk);
-  vif.master_driver_cb.ftch_dec_vld <= 1;
+  @(vif.master_driver_cb);
+  vif.master_driver_cb.ftch_dec_vld <= item.vld;
   vif.master_driver_cb.ftch_dec_pkt <= item.pkt;
 endtask : drive

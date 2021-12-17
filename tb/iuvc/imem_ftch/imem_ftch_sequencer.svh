@@ -4,7 +4,6 @@ class imem_ftch_sequencer extends uvm_sequencer#(imem_ftch_seq_item);
   bit       enabled   = 1;
   bit       kill      = 0;
   int       trans_cnt = 0;
-  semaphore trans_cnt_semaphore;
 
   extern function new(string name, uvm_component parent);
 
@@ -12,6 +11,4 @@ endclass : imem_ftch_sequencer
 
 function imem_ftch_sequencer::new(string name, uvm_component parent);
   super.new(name, parent);
-
-  trans_cnt_semaphore = new(1);
 endfunction : new

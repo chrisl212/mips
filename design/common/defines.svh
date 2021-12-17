@@ -1,1 +1,6 @@
-`define WORD_BITS (32)
+`define WORD_BITS       (32)
+`define NUM_REGS        (32)
+`define REG_BITS        ($clog2(`NUM_REGS))
+`define SHAMT_BITS      (5)
+`define IMM_BITS        (16)
+`define JMP_ADDR_BITS   (26)

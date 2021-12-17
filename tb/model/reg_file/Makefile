@@ -1,5 +1,6 @@
 FILES = ../../../design/mips_pkg.sv \
-		../../../design/reg_file/reg_file.sv \
+		../../../design/cpu/intf/reg_file_pkg.sv \
+		../../../design/cpu/dec_stg/reg_file/reg_file.sv \
 		../../iuvc/clk_reset/clk_reset_intf.sv \
 		../../iuvc/clk_reset/clk_reset_iuvc_pkg.sv \
 		../../iuvc/reg_file_rd_req/reg_file_rd_req_intf.sv \

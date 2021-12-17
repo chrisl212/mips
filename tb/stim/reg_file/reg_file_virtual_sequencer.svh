@@ -1,9 +1,5 @@
 class reg_file_virtual_sequencer extends uvm_sequencer;
-  `uvm_analysis_imp_decl(_clk)
-  `uvm_analysis_imp_decl(_reg_file_rd_req)
-  `uvm_analysis_imp_decl(_reg_file_rd_rsp)
-  `uvm_analysis_imp_decl(_reg_file_wr_req)
-
+  
   uvm_analysis_imp_clk#(bit, reg_file_virtual_sequencer)                                  clk_imp;
   uvm_analysis_imp_reg_file_rd_req#(reg_file_rd_req_seq_item, reg_file_virtual_sequencer) reg_file_rd_req_imp;
   uvm_analysis_imp_reg_file_rd_rsp#(reg_file_rd_rsp_seq_item, reg_file_virtual_sequencer) reg_file_rd_rsp_imp;

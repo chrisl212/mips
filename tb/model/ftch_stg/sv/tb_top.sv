@@ -25,6 +25,7 @@ module tb_top;
     .ftch_imem_pkt(i_ftch_imem_intf.ftch_imem_pkt),
     .imem_ftch_vld(i_imem_ftch_intf.imem_ftch_vld),
     .imem_ftch_pkt(i_imem_ftch_intf.imem_ftch_pkt),
+    .mem_ftch_vld(i_mem_ftch_intf.mem_ftch_vld),
     .mem_ftch_pkt(i_mem_ftch_intf.mem_ftch_pkt)
   );
 
