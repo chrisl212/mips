@@ -26,7 +26,7 @@ endfunction : build_phase
 task ftch_dec_slave_driver::run_phase(uvm_phase phase);
   ftch_dec_seq_item item;
 
-  vif.slave_driver_cb.ftch_dec_rdy <= 0;
+  vif.cb.ftch_dec_rdy <= 0;
 
   forever begin
     seq_item_port.get_next_item(item);
@@ -38,6 +38,6 @@ endtask : run_phase
 task ftch_dec_slave_driver::drive(ftch_dec_seq_item item);
   `uvm_info({s_id, "DRIVING"}, $sformatf("driving request:\n%0s", item.sprint()), UVM_DEBUG)
 
-  @(vif.slave_driver_cb);
-  vif.slave_driver_cb.ftch_dec_rdy <= item.rdy;
+  @(vif.cb);
+  vif.cb.ftch_dec_rdy <= item.rdy;
 endtask : drive

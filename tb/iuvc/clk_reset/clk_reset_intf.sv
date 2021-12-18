@@ -3,10 +3,10 @@ interface clk_reset_intf(
   input  logic          resetn
 );
 
-  clocking mon_cb @(posedge clk);
-    input clk;
-    input resetn;
-  endclocking : mon_cb
+  clocking cb @(posedge clk);
+    inout clk;
+    inout resetn;
+  endclocking : cb
 
 endinterface : clk_reset_intf
 

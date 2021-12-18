@@ -26,8 +26,8 @@ endfunction : build_phase
 task wrb_dec_master_driver::run_phase(uvm_phase phase);
   wrb_dec_seq_item item;
   
-  vif.master_driver_cb.wrb_dec_vld <= 0;
-  vif.master_driver_cb.wrb_dec_pkt <= 0;
+  vif.cb.wrb_dec_vld <= 0;
+  vif.cb.wrb_dec_pkt <= 0;
 
   forever begin
     seq_item_port.get_next_item(item);
@@ -39,7 +39,7 @@ endtask : run_phase
 task wrb_dec_master_driver::drive(wrb_dec_seq_item item);
   `uvm_info({s_id, "DRIVING"}, $sformatf("driving request:\n%0s", item.sprint()), UVM_DEBUG)
 
-  @(vif.master_driver_cb);
-  vif.master_driver_cb.wrb_dec_vld <= item.vld;
-  vif.master_driver_cb.wrb_dec_pkt <= item.pkt;
+  @(vif.cb);
+  vif.cb.wrb_dec_vld <= item.vld;
+  vif.cb.wrb_dec_pkt <= item.pkt;
 endtask : drive

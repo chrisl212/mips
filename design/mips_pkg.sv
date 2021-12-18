@@ -91,10 +91,8 @@ package mips_pkg;
     case (opcode)
       OPCODE_LB,
       OPCODE_LH,
-      OPCODE_LW,
       OPCODE_SB,
       OPCODE_SH,
-      OPCODE_SW,
       OPCODE_BLEZ,
       OPCODE_BGTZ,
       OPCODE_ADDI,

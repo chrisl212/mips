@@ -19,6 +19,11 @@ task mem_ftch_sequence::body();
     if (p_sequencer.kill) break;
 
     wait(p_sequencer.enabled);
-    `uvm_do(item)
+    `uvm_do_with(item, {
+      item.vld dist {
+        1 := 20,
+        0 := 80
+      };
+    })
   end
 endtask : body

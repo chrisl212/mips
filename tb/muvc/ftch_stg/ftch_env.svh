@@ -41,7 +41,6 @@ function void ftch_env::build_phase(uvm_phase phase);
 endfunction : build_phase
 
 function void ftch_env::connect_phase(uvm_phase phase);
-  clk_reset_agt.monitor.clk_fall_port.connect(ftch_sb.clk_fall_imp);
   clk_reset_agt.monitor.reset_port.connect(ftch_sb.reset_imp);
   ftch_dec_agt.monitor.item_collected_port.connect(ftch_sb.ftch_dec_imp);
   ftch_imem_agt.monitor.item_collected_port.connect(ftch_sb.ftch_imem_imp);

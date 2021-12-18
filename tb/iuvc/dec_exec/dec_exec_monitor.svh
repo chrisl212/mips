@@ -30,12 +30,12 @@ task dec_exec_monitor::run_phase(uvm_phase phase);
   dec_exec_seq_item seq_item;
 
   forever begin
-    @(vif.mon_cb iff vif.resetn);
+    @(vif.cb iff vif.resetn);
 
     seq_item     = dec_exec_seq_item::type_id::create("dec_exec_seq_item");
-    seq_item.vld = vif.mon_cb.dec_exec_vld;
-    seq_item.rdy = vif.mon_cb.dec_exec_rdy;
-    seq_item.pkt = vif.mon_cb.dec_exec_pkt;
+    seq_item.vld = vif.cb.dec_exec_vld;
+    seq_item.rdy = vif.cb.dec_exec_rdy;
+    seq_item.pkt = vif.cb.dec_exec_pkt;
 
     item_collected_port.write(seq_item);
   end

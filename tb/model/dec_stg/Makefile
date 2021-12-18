@@ -35,4 +35,4 @@ wave:
 	vivado -source open_waves.tcl
 
 clean:
-	rm -rf *.jou *.log *.pb *.wdb *.dir
+	rm -rf *.jou *.log *.pb *.wdb *.dir *.str

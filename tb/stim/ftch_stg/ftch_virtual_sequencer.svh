@@ -17,6 +17,7 @@ class ftch_virtual_sequencer extends uvm_sequencer;
 
   bit                 ftch_imem_vld  = 0;
   bit                 mem_ftch_vld   = 0;
+  bit                 imem_ftch_vld  = 0;
   bit                 ftch_dec_seen  = 0;
   bit                 ftch_imem_seen = 0;
   bit                 imem_ftch_seen = 0;
@@ -58,10 +59,13 @@ task ftch_virtual_sequencer::run_phase(uvm_phase phase);
 
   fork
     forever begin
-      wait(ftch_dec_seen && ftch_imem_seen && mem_ftch_seen);
+      wait(ftch_dec_seen && ftch_imem_seen && mem_ftch_seen && imem_ftch_seen);
 
       if (ftch_imem_vld) begin
         imem_ftch_sqr.trans_cnt = 1;
+      end
+      if (mem_ftch_vld || imem_ftch_vld) begin
+        imem_ftch_sqr.trans_cnt = 0;
       end
 
       ftch_dec_seen  = 0;
@@ -115,6 +119,7 @@ endfunction : write_ftch_imem
 function void ftch_virtual_sequencer::write_imem_ftch(imem_ftch_seq_item item);
   `uvm_info({s_id, "WRITE_IMEM_FTCH"}, $sformatf("received imem_ftch item:\n%0s", item.sprint()), UVM_FULL)
 
+  imem_ftch_vld  = item.vld;
   imem_ftch_seen = 1;
 endfunction : write_imem_ftch
 

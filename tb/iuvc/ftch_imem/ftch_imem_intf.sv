@@ -7,20 +7,10 @@ interface ftch_imem_intf(
   logic           ftch_imem_vld;
   ftch_imem_pkt_t ftch_imem_pkt;
 
-  clocking mon_cb @(posedge clk);
-    input ftch_imem_vld;
-    input ftch_imem_pkt;
-  endclocking : mon_cb
-
-  clocking master_driver_cb @(posedge clk);
-    output ftch_imem_vld;
-    output ftch_imem_pkt;
-  endclocking : master_driver_cb
-
-  clocking slave_driver_cb @(posedge clk);
-    input  ftch_imem_vld;
-    input  ftch_imem_pkt;
-  endclocking : slave_driver_cb
+  clocking cb @(posedge clk);
+    inout ftch_imem_vld;
+    inout ftch_imem_pkt;
+  endclocking : cb
 
 endinterface : ftch_imem_intf
 

@@ -30,10 +30,10 @@ task dec_haz_monitor::run_phase(uvm_phase phase);
   dec_haz_seq_item seq_item;
 
   forever begin
-    @(vif.mon_cb iff vif.resetn);
+    @(vif.cb iff vif.resetn);
 
     seq_item         = dec_haz_seq_item::type_id::create("dec_haz_seq_item");
-    seq_item.pkt     = vif.mon_cb.dec_haz_pkt;
+    seq_item.pkt     = vif.cb.dec_haz_pkt;
 
     item_collected_port.write(seq_item);
   end

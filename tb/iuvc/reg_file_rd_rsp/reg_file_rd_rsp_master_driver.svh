@@ -26,7 +26,7 @@ endfunction : build_phase
 task reg_file_rd_rsp_master_driver::run_phase(uvm_phase phase);
   reg_file_rd_rsp_seq_item item;
 
-  vif.master_driver_cb.reg_file_rd_rsp_pkt <= 0;
+  vif.cb.reg_file_rd_rsp_pkt <= 0;
 
   forever begin
     seq_item_port.get_next_item(item);
@@ -38,6 +38,6 @@ endtask : run_phase
 task reg_file_rd_rsp_master_driver::drive(reg_file_rd_rsp_seq_item item);
   `uvm_info({s_id, "DRIVING"}, $sformatf("driving rspuest:\n%0s", item.sprint()), UVM_DEBUG)
 
-  @(vif.master_driver_cb);
-  vif.master_driver_cb.reg_file_rd_rsp_pkt[item.rd_port] <= item.pkt;
+  @(vif.cb);
+  vif.cb.reg_file_rd_rsp_pkt[item.rd_port] <= item.pkt;
 endtask : drive

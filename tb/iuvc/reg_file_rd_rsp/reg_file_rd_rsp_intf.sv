@@ -6,13 +6,9 @@ interface reg_file_rd_rsp_intf(
 
   reg_file_rd_rsp_pkt_t [1:0]reg_file_rd_rsp_pkt;
 
-  clocking mon_cb @(posedge clk);
-    input reg_file_rd_rsp_pkt;
-  endclocking : mon_cb
-
-  clocking master_driver_cb @(posedge clk);
-    output reg_file_rd_rsp_pkt;
-  endclocking : master_driver_cb
+  clocking cb @(posedge clk);
+    inout reg_file_rd_rsp_pkt;
+  endclocking : cb
 
 endinterface : reg_file_rd_rsp_intf
 

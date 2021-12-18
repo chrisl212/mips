@@ -30,10 +30,10 @@ task alu_out_monitor::run_phase(uvm_phase phase);
   alu_out_seq_item seq_item;
 
   forever begin
-    @(vif.mon_cb iff vif.resetn);
+    @(vif.cb iff vif.resetn);
 
     seq_item     = alu_out_seq_item::type_id::create("alu_out_seq_item");
-    seq_item.pkt = vif.mon_cb.alu_out_pkt;
+    seq_item.pkt = vif.cb.alu_out_pkt;
 
     item_collected_port.write(seq_item);
   end

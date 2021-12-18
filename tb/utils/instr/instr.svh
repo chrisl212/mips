@@ -242,6 +242,7 @@ function bit instr::sgnd();
   sgnd = 0;
 
   sgnd |= opcode inside {OPCODE_BLEZ, OPCODE_BGTZ, OPCODE_ADDI, OPCODE_SLTI};
+  sgnd |= opcode inside {OPCODE_LB, OPCODE_LH, OPCODE_SB, OPCODE_SH};
   sgnd |= opcode == OPCODE_RTYPE && func inside {FUNC_SRA, FUNC_SRAV, FUNC_ADD, FUNC_SUB, FUNC_SLT};
 
   return sgnd;

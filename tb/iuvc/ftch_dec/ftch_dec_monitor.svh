@@ -30,12 +30,12 @@ task ftch_dec_monitor::run_phase(uvm_phase phase);
   ftch_dec_seq_item seq_item;
 
   forever begin
-    @(vif.mon_cb iff vif.resetn);
+    @(vif.cb iff vif.resetn);
 
     seq_item     = ftch_dec_seq_item::type_id::create("ftch_dec_seq_item");
-    seq_item.vld = vif.mon_cb.ftch_dec_vld;
-    seq_item.rdy = vif.mon_cb.ftch_dec_rdy;
-    seq_item.pkt = vif.mon_cb.ftch_dec_pkt;
+    seq_item.vld = vif.cb.ftch_dec_vld;
+    seq_item.rdy = vif.cb.ftch_dec_rdy;
+    seq_item.pkt = vif.cb.ftch_dec_pkt;
 
     item_collected_port.write(seq_item);
   end

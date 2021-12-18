@@ -7,20 +7,10 @@ interface wrb_dec_intf(
   logic          wrb_dec_vld;
   wrb_dec_pkt_t wrb_dec_pkt;
 
-  clocking mon_cb @(posedge clk);
-    input wrb_dec_vld;
-    input wrb_dec_pkt;
-  endclocking : mon_cb
-
-  clocking master_driver_cb @(posedge clk);
-    output wrb_dec_vld;
-    output wrb_dec_pkt;
-  endclocking : master_driver_cb
-
-  clocking slave_driver_cb @(posedge clk);
-    input  wrb_dec_vld;
-    input  wrb_dec_pkt;
-  endclocking : slave_driver_cb
+  clocking cb @(posedge clk);
+    inout wrb_dec_vld;
+    inout wrb_dec_pkt;
+  endclocking : cb
 
 endinterface : wrb_dec_intf
 

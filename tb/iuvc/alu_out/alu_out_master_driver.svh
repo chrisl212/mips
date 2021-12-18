@@ -26,7 +26,7 @@ endfunction : build_phase
 task alu_out_master_driver::run_phase(uvm_phase phase);
   alu_out_seq_item item;
   
-  vif.master_driver_cb.alu_out_pkt <= 0;
+  vif.cb.alu_out_pkt <= 0;
 
   forever begin
     seq_item_port.get_next_item(item);
@@ -38,6 +38,6 @@ endtask : run_phase
 task alu_out_master_driver::drive(alu_out_seq_item item);
   `uvm_info({s_id, "DRIVING"}, $sformatf("driving request:\n%0s", item.sprint()), UVM_DEBUG)
 
-  @(vif.master_driver_cb);
-  vif.master_driver_cb.alu_out_pkt <= item.pkt;
+  @(vif.cb);
+  vif.cb.alu_out_pkt <= item.pkt;
 endtask : drive

@@ -6,13 +6,9 @@ interface haz_dec_intf(
 
   haz_dec_pkt_t haz_dec_pkt;
 
-  clocking mon_cb @(posedge clk);
-    input haz_dec_pkt;
-  endclocking : mon_cb
-
-  clocking master_driver_cb @(posedge clk);
-    output haz_dec_pkt;
-  endclocking : master_driver_cb
+  clocking cb @(posedge clk);
+    inout haz_dec_pkt;
+  endclocking : cb
 
 endinterface : haz_dec_intf
 

@@ -30,11 +30,11 @@ task reg_file_wr_req_monitor::run_phase(uvm_phase phase);
   reg_file_wr_req_seq_item seq_item;
 
   forever begin
-    @(vif.mon_cb iff vif.resetn);
+    @(vif.cb iff vif.resetn);
 
     seq_item         = reg_file_wr_req_seq_item::type_id::create("reg_file_wr_req_seq_item");
-    seq_item.vld     = vif.mon_cb.reg_file_wr_req_vld;
-    seq_item.pkt     = vif.mon_cb.reg_file_wr_req_pkt;
+    seq_item.vld     = vif.cb.reg_file_wr_req_vld;
+    seq_item.pkt     = vif.cb.reg_file_wr_req_pkt;
 
     item_collected_port.write(seq_item);
   end

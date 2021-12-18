@@ -1,6 +1,5 @@
 class ftch_scoreboard extends uvm_component;
 
-  uvm_analysis_imp_clk_fall#(bit, ftch_scoreboard)                 clk_fall_imp;
   uvm_analysis_imp_reset#(bit, ftch_scoreboard)                    reset_imp;
   uvm_analysis_imp_ftch_dec#(ftch_dec_seq_item, ftch_scoreboard)   ftch_dec_imp;
   uvm_analysis_imp_ftch_imem#(ftch_imem_seq_item, ftch_scoreboard) ftch_imem_imp;
@@ -30,7 +29,6 @@ class ftch_scoreboard extends uvm_component;
   extern function void check_phase(uvm_phase phase);
   extern function void check_end_of_cycle();
   extern function void reset();
-  extern function void write_clk_fall(bit dummy);
   extern function void write_reset(bit dummy);
   extern function void write_ftch_dec(ftch_dec_seq_item item);
   extern function void write_ftch_imem(ftch_imem_seq_item item);
@@ -45,7 +43,6 @@ endfunction : new
 function void ftch_scoreboard::build_phase(uvm_phase phase);
   super.build_phase(phase);
 
-  clk_fall_imp  = new("clk_fall_imp", this);
   reset_imp     = new("reset_imp", this);
   ftch_dec_imp  = new("ftch_dec_imp", this);
   ftch_imem_imp = new("ftch_imem_imp", this);
@@ -114,9 +111,6 @@ function void ftch_scoreboard::reset();
   exp_instr_q.delete();
 endfunction : reset
   
-function void ftch_scoreboard::write_clk_fall(bit dummy);
-endfunction : write_clk_fall
-
 function void ftch_scoreboard::write_reset(bit dummy);
   `uvm_info({s_id, "RESET"}, "resetting", UVM_FULL)
   reset();

@@ -30,11 +30,11 @@ task wrb_dec_monitor::run_phase(uvm_phase phase);
   wrb_dec_seq_item seq_item;
 
   forever begin
-    @(vif.mon_cb iff vif.resetn);
+    @(vif.cb iff vif.resetn);
 
     seq_item     = wrb_dec_seq_item::type_id::create("wrb_dec_seq_item");
-    seq_item.vld = vif.mon_cb.wrb_dec_vld;
-    seq_item.pkt = vif.mon_cb.wrb_dec_pkt;
+    seq_item.vld = vif.cb.wrb_dec_vld;
+    seq_item.pkt = vif.cb.wrb_dec_pkt;
 
     item_collected_port.write(seq_item);
   end

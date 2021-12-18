@@ -34,6 +34,9 @@ endfunction : new
 function void dec_virtual_sequencer::build_phase(uvm_phase phase);
   super.build_phase(phase);
 
+  if (uvm_config_int::get(uvm_root::get(), "*", "max_trans", max_trans))
+    `uvm_info("MAX_TRANS", $sformatf("overriding max_trans to %0d", max_trans), UVM_FULL)
+
   clk_imp       = new("clk_imp", this);
   ftch_dec_imp  = new("ftch_dec_imp", this);
 endfunction : build_phase
