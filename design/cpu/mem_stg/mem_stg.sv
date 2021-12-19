@@ -17,7 +17,7 @@ module mem_stg(
   import mips_pkg::*;
   import exec_mem_pkg::*;
   
-  logic             in_pkt_vld, in_pkt_nxt;
+  logic             in_pkt_vld, in_pkt_vld_nxt;
   exec_mem_pkt_t    in_pkt_q, in_pkt_nxt;
 
   /* =============================================== */
