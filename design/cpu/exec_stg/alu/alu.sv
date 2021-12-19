@@ -8,15 +8,10 @@ module alu(
   word_t a;
   word_t b;
   word_t dat;
-  logic  slt;
 
-  assign slt                    = (alu_in_pkt.sgnd) ? ~alu_out_pkt.flags.n :
-                                                      alu_out_pkt.flags.n;
-  
   assign alu_out_pkt.res        = dat;
   assign alu_out_pkt.flags.n    = dat[31];
-  assign alu_out_pkt.flags.v    = (~alu_in_pkt.sgnd)          ? 0 :
-                                  (alu_in_pkt.op == ALU_ADD)  ? (~dat[31] & a[31] & alu_in_pkt.s1[31])
+  assign alu_out_pkt.flags.v    = (alu_in_pkt.op == ALU_ADD)  ? (~dat[31] & a[31] & alu_in_pkt.s1[31])
                                                                  | (dat[31] & ~a[31] & ~alu_in_pkt.s1[31]) :
                                   (alu_in_pkt.op == ALU_SUB)  ? (a[31] ^ alu_in_pkt.s1[31]) & ~(dat[31] ^ alu_in_pkt.s1[31]) :
                                                                 0;

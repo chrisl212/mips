@@ -1,7 +1,7 @@
 class haz_dec_master_driver extends uvm_driver#(haz_dec_seq_item);
   virtual haz_dec_intf vif;
 
-  string s_id = "DEC_HAZ_MASTER_DRIVER/";
+  string s_id = "HAZ_DEC_MASTER_DRIVER/";
 
   `uvm_component_utils(haz_dec_master_driver)
 

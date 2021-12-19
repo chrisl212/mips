@@ -1,7 +1,7 @@
 class haz_dec_monitor extends uvm_monitor;
   virtual haz_dec_intf vif;
 
-  string s_id = "DEC_HAZ_MON/";
+  string s_id = "HAZ_DEC_MON/";
 
   uvm_analysis_port #(haz_dec_seq_item) item_collected_port;
 

@@ -14,7 +14,7 @@ module exec_stg(
   import dec_exec_pkg::*;
   import alu_pkg::*;
 
-  logic             in_pkt_vld, in_pkt_nxt;
+  logic             in_pkt_vld, in_pkt_vld_nxt;
   dec_exec_pkt_t    in_pkt_q, in_pkt_nxt;
 
   /* =============================================== */
@@ -79,16 +79,20 @@ module exec_stg(
   /* EXECUTE */
   /* =============================================== */
 
+  logic     lt;
   logic     jmp_vld;
   word_t    addr;
   mem_op_e  mem_op;
   mem_sz_e  mem_sz;
+  logic     sgnd;
   logic     dst_vld;
   reg_t     dst_reg;
   word_t    data;
 
+  assign lt         = alu_out_pkt.flags.n ^ alu_out_pkt.flags.v ^ (~alu_in_pkt.sgnd & (alu_in_pkt.s0[31] ^ alu_in_pkt.s1[31]));
   assign mem_op     = in_pkt_q.mem_op;
   assign mem_sz     = in_pkt_q.mem_sz;
+  assign sgnd       = in_pkt_q.sgnd;
   assign dst_vld    = in_pkt_q.dst_vld;
   assign dst_reg    = in_pkt_q.dst_reg;
 
@@ -98,17 +102,19 @@ module exec_stg(
     data    = alu_out_pkt.res;
 
     if (in_pkt_q.slt) begin
-      data = {31'b0, alu_out_pkt.flags.n ^ alu_in_pkt.sgnd};
-    end else if (br_jmp_op != NO_BR_JMP) begin
-      case (br_jmp_op)
+      data = {31'b0, lt};
+    end
+    if (in_pkt_q.br_jmp_op != NO_BR_JMP) begin
+      case (in_pkt_q.br_jmp_op)
         BR_EQ:  jmp_vld = alu_out_pkt.flags.z;
         BR_NE:  jmp_vld = ~alu_out_pkt.flags.z;
-        BR_LE:  jmp_vld = ~alu_out_pkt.flags.n | alu_out_pkt.flags.z;
-        BR_GT:  jmp_vld = alu_out_pkt.flags.n;
-        JMP:    jmp_vld = 1;
+        BR_LE:  jmp_vld = lt | alu_out_pkt.flags.z;
+        BR_GT:  jmp_vld = ~lt;
+        JR,
+        J:      jmp_vld = 1;
       endcase
 
-      case (br_jmp_op)
+      case (in_pkt_q.br_jmp_op)
         BR_EQ,
         BR_NE,
         BR_LE,
@@ -126,7 +132,7 @@ module exec_stg(
   /* EXEC_MEM */
   /* =============================================== */
   
-  assign exec_mem_vld         = in_pkt_vld & ~haz_dec_pkt.bubble;
+  assign exec_mem_vld         = in_pkt_vld & ~haz_exec_pkt.bubble;
   assign exec_mem_pkt.jmp_vld = jmp_vld;
   assign exec_mem_pkt.addr    = addr;
   assign exec_mem_pkt.mem_op  = mem_op;

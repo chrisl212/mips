@@ -59,13 +59,11 @@ function void alu_scoreboard::check_in_out(alu_in_pkt_t in, alu_out_pkt_t out);
   endcase
 
   exp_flags.z = exp_res == 0;
-  if (in.sgnd) begin
-    case (in.op)
-      ALU_ADD: exp_flags.v = (~exp_res[31] & in.s0[31] & in.s1[31]) | (exp_res[31] & ~in.s0[31] & ~in.s1[31]);
-      ALU_SUB: exp_flags.v = in.s0[31] != in.s1[31] && exp_res[31] == in.s1[31];
-      default: exp_flags.v = 0;
-    endcase
-  end
+  case (in.op)
+    ALU_ADD: exp_flags.v = (~exp_res[31] & in.s0[31] & in.s1[31]) | (exp_res[31] & ~in.s0[31] & ~in.s1[31]);
+    ALU_SUB: exp_flags.v = in.s0[31] != in.s1[31] && exp_res[31] == in.s1[31];
+    default: exp_flags.v = 0;
+  endcase
   exp_flags.n = exp_res[31];
 
   `uvm_info({s_id, "CHK"},
