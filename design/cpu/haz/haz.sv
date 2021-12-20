@@ -15,12 +15,12 @@ module haz(
     stall = 0;
 
     if (dec_haz_pkt.rs_vld) begin
-      stall |= dec_haz_pkt.rs_reg == exec_haz_pkt.dst_reg && exec_haz_pkt.dst_vld;
-      stall |= dec_haz_pkt.rs_reg == mem_haz_pkt.dst_reg && mem_haz_pkt.dst_vld;
+      stall |= dec_haz_pkt.rs == exec_haz_pkt.dst_reg && exec_haz_pkt.dst_vld;
+      stall |= dec_haz_pkt.rs == mem_haz_pkt.dst_reg && mem_haz_pkt.dst_vld;
     end
     if (dec_haz_pkt.rt_vld) begin
-      stall |= dec_haz_pkt.rt_reg == exec_haz_pkt.dst_reg && exec_haz_pkt.dst_vld;
-      stall |= dec_haz_pkt.rt_reg == mem_haz_pkt.dst_reg && mem_haz_pkt.dst_vld;
+      stall |= dec_haz_pkt.rt == exec_haz_pkt.dst_reg && exec_haz_pkt.dst_vld;
+      stall |= dec_haz_pkt.rt == mem_haz_pkt.dst_reg && mem_haz_pkt.dst_vld;
     end
   end
 

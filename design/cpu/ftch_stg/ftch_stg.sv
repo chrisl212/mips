@@ -1,17 +1,13 @@
 module ftch_stg(
   input logic clk,
   input logic resetn,
-
   output logic                          ftch_imem_vld,
   output ftch_imem_pkg::ftch_imem_pkt_t ftch_imem_pkt,
-  
   input  logic                          imem_ftch_vld,
   input  ftch_imem_pkg::imem_ftch_pkt_t imem_ftch_pkt,
-
   output logic                          ftch_dec_vld,
   input  logic                          ftch_dec_rdy,
   output ftch_dec_pkg::ftch_dec_pkt_t   ftch_dec_pkt,
-
   input  logic                          mem_ftch_vld,
   input  mem_ftch_pkg::mem_ftch_pkt_t   mem_ftch_pkt
 );

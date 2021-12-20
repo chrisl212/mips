@@ -109,7 +109,7 @@ module exec_stg(
         BR_EQ:  jmp_vld = alu_out_pkt.flags.z;
         BR_NE:  jmp_vld = ~alu_out_pkt.flags.z;
         BR_LE:  jmp_vld = lt | alu_out_pkt.flags.z;
-        BR_GT:  jmp_vld = ~lt;
+        BR_GT:  jmp_vld = ~lt & ~alu_out_pkt.flags.z;
         JR,
         J:      jmp_vld = 1;
       endcase

@@ -55,7 +55,7 @@ function void alu_scoreboard::check_in_out(alu_in_pkt_t in, alu_out_pkt_t out);
     ALU_XOR: exp_res = in.s0 ^ in.s1;
     ALU_NOR: exp_res = ~(in.s0 | in.s1);
     ALU_SL:  exp_res = in.s1 << in.s0;
-    ALU_SR:  exp_res = (in.sgnd) ? in.s1 <<< in.s0 : in.s1 << in.s0;
+    ALU_SR:  exp_res = (in.sgnd) ? in.s1 >>> in.s0 : in.s1 >> in.s0;
   endcase
 
   exp_flags.z = exp_res == 0;
